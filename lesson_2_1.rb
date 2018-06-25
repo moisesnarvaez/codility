@@ -3,7 +3,7 @@ def solution(array_original, rotate_number)
   array_transformed = []
   array_size = array_original.size
 
-  return array_original if array_size.eql? rotate_number
+  return array_original if array_size.eql?(rotate_number) || array_size.eql?(1)
 
   (0..array_size - 1).each do |i|
     new_position = i + rotate_number
@@ -24,7 +24,7 @@ rotate_number = 3
 
 result = solution(array_original, rotate_number)
 
-puts "Original Array:"
+puts 'Original Array:'
 p array_original
 puts "Array rotated: #{rotate_number} times:"
 p result
