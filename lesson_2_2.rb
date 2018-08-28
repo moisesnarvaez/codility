@@ -2,19 +2,16 @@
 def solution(array)
   batch_size = 1000
   acumulator = []
-  array.each_slice(batch_size) do |batch|
-    batch.each do |element|
-      acumulator[element] = (acumulator[element] || 0) + 1
+  result = nil
+  array.each do |element|
+    if acumulator[element]
+      acumulator[element] = nil
+    else
+      acumulator[element] = true
+      result = element
     end
   end
-  acumulator.each_slice(batch_size).with_index do |array_part, i|
-    increment = batch_size * i
-    array_part.each_with_index do |element, j|
-      next if element.nil? || (element % 2).zero?
-      return j + increment
-    end
-  end
-  nil
+  result
 end
 
 puts '****************************'
